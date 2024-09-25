@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Anniversaire Bounty!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6f2;
+        }
+
+        header {
+            background-color: #ff80b3;
+            text-align: center;
+            padding: 50px;
+            color: white;
+            font-size: 3em;
+            font-family: 'Pacifico', cursive;
+        }
+
+        section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Create a responsive grid */
+            gap: 20px; /* Space between images */
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+        .gallery div {
+            position: relative;
+            margin: 10px;
+        }
+
+        .gallery img {
+            width: 100%; /* Make images responsive */
+            height: 200px; /* Set a fixed height */
+            object-fit: cover; /* Crop images to fit */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .tooltip {
+            display: none; /* Hide tooltip by default */
+            position: absolute;
+            bottom: 100%; /* Position above the image */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+
+        .gallery div:hover .tooltip {
+            display: block; /* Show tooltip on hover */
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        video {
+            width: 30vw; /* Largeur de 50% de la fenêtre */
+            height: auto; /* Hauteur automatique pour garder les proportions */
+            max-width: 100%; /* Empêche le débordement */
+            aspect-ratio: 1 / 1; /* Force la vidéo à être carrée */
+            object-fit: cover; /* Recadre la vidéo pour remplir le conteneur */
+        }
+
+        #hiddenVideo {
+            display: none; /* Cacher la vidéo liée au mot secret */
+        }
+
+        #modal {
+            display: none; /* Masquer le modal par défaut */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #modal h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        #secretWordBox {
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            padding: 10px;
+            border: 2px solid #ff80b3;
+            background-color: white;
+            color: black;
+            position: relative;
+        }
+        #secretWord {
+            margin-left: 10px;
+            font-weight: bold;
+            color: transparent; /* Masquer le mot */
+            transition: color 0.3s ease;
+        }
+
+        /* Falling roses */
+        .rose {
+            position: absolute;
+            top: -50px; /* Start above the screen */
+            width: 30px; /* Size of the rose */
+            animation: fall 4s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh); /* Fall to the bottom */
+            }
+        }
+
+        footer {
+            background-color: #ff80b3;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête -->
+    <header>
+        Happy Birthday Bounty 🎉🎂
+    </header>
+
+    <!-- Section Photos -->
+    <section>
+        <h2>Moments 💕</h2>
+        <div class="gallery">
+            <div>
+                <img src="1b097a9a-bdff-49cd-80ff-1658402f9529.JPG" alt="Lovers">
+                <div class="tooltip">Lovers</div>
+            </div>
+            <div>
+                <img src="2ce66319-9386-403d-8266-6bc0e3bfac52.JPG" alt="Bundle of Joy">
+                <div class="tooltip">Bundle of Joy</div>
+            </div>
+            <div>
+                <img src="6bdfcfd0-8cfa-4301-9009-7c70dc94f9fd.JPG" alt="Slaying Together">
+                <div class="tooltip">Slaying Together</div>
+            </div>
+            <div>
+                <img src="9cbe8bee-d3f6-45c9-a7c4-177759a47643.JPG" alt="Birthday Girl">
+                <div class="tooltip">Birthday Girl</div>
+            </div>
+            <div>
+                <img src="720cab0c-920d-430d-b424-2802a1d273dc.JPG" alt="I love you Bounty">
+                <div class="tooltip">I love you Bounty</div>
+            </div>
+            <div>
+                <img src="afd5ce74-2406-42a0-b54d-57dfe1c4656a.JPG" alt="Selfying with THE Diva">
+                <div class="tooltip">Selfying with THE Diva</div>
+            </div>
+            <div>
+                <img src="cdcd7bb6-0aa8-42bb-9e86-ba587a592b6f.JPG" alt="Doing Life Together">
+                <div class="tooltip">Doing Life Together</div>
+            </div>
+            <div>
+                <img src="d61c578d-90f6-4743-b6c0-1a0c5336d5a9.JPG" alt="Cuteness">
+                <div class="tooltip">Cuteness</div>
+            </div>
+            <div>
+                <img src="dcaa1688-bbd1-4151-bdf3-692324dbd5ae.JPG" alt="Fam">
+                <div class="tooltip">Fam</div>
+            </div>
+            <div>
+                <img src="fb896450-56a9-4586-a409-86fdf558fa00.JPG" alt="3NABIN">
+                <div class="tooltip">3NABIN</div>
+            </div>
+            <div>
+                <img src="IMG_1089.jpg" alt="Crazy">
+                <div class="tooltip">Crazy</div>
+            </div>
+            <div>
+                <img src="PHOTO-2024-06-26-18-42-13.jpg" alt="Mouah">
+                <div class="tooltip">Mouah</div>
+            </div>
+        </div>
+    
+            <h2>Here's a special video for you 💖</h2>
+            <div class="video-container">
+                <video id="annivVideo" controls autoplay muted>
+                    <source src="copy_34A48FCD-BB04-45B9-A6CF-D4E9CE7815CB.mp4" type="video/mp4">
+                    Votre navigateur ne prend pas en charge la vidéo.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deuxième vidéo cachée par défaut -->
+    <div id="modal">
+        <h2>Surprise ! 🎉</h2>
+        <div id="falling-roses"></div> <!-- Conteneur des roses -->
+        <video id="hiddenVideo" controls loop>
+            <source src="v12044gd0000cn74puvog65v8dt1vrrg.mp4" type="video/mp4">
+            Votre navigateur ne prend pas en charge la vidéo.
+        </video>
+    </div>
+    <div id="secretWordBox">
+        <span>Dis le mot secret 🎤!</span>
+        <span id="secretWord">yara</span> <!-- Mot secret caché -->
+    </div>
+    <button id="revealButton">Afficher le mot secret</button>
+
+    <audio id="annivAudio" loop>
+        <source src="IMG_7548 (online-audio-converter.com)-[AudioTrimmer.com].mp3" type="audio/mp3">
+        Votre navigateur ne prend pas en charge l'audio.
+    </audio>
+
+<script>
+    // Mot secret que l'amie doit dire
+    const secretWord = "yara";
+    const hiddenVideo = document.getElementById('hiddenVideo');
+    const audio = document.getElementById('annivAudio');
+    const modal = document.getElementById('modal');
+    const secretWordElement = document.getElementById('secretWord');
+    const fallingRosesContainer = document.getElementById('falling-roses');
+
+    // Afficher le mot secret lorsqu'on clique sur le bouton
+    document.getElementById('revealButton').addEventListener('click', function() {
+        secretWordElement.style.color = 'black'; // Afficher le mot secret
+    });
+     // Fonction pour afficher la vidéo et lancer la lecture
+     function playHiddenVideo() {
+        console.log("Affichage de la vidéo cachée et lancement !");
+        hiddenVideo.style.display = 'block'; // Affiche la vidéo cachée
+        hiddenVideo.play(); // Démarre la vidéo cachée
+    }
+
+
+    // Fonction pour lancer l'audio
+    function playAudio() {
+        audio.play().catch(error => {
+            console.error("Erreur de lecture audio :", error);
+        });
+    }
+
+    // Créer des roses qui tombent
+    function createFallingRoses() {
+        const numberOfRoses = 10; // Number of roses to fall
+        for (let i = 0; i < numberOfRoses; i++) {
+            const rose = document.createElement('img');
+            rose.src = 'rose.png'; // Path to your rose image
+            rose.classList.add('rose');
+            // Randomize the starting position
+            rose.style.left = Math.random() * 100 + 'vw';
+            rose.style.animationDuration = (Math.random() * 2 + 2) + 's'; // Random fall duration
+            fallingRosesContainer.appendChild(rose);
+        }
+    }
+
+    function onSecretWordDetected() {
+        // Ajoute un délai pour permettre la lecture
+        setTimeout(() => {
+            playHiddenVideo();
+            playAudio();
+            modal.style.display = 'flex';
+            createFallingRoses();
+        }, 100); // Délai de 100 ms
+    }
+    // Fonction de reconnaissance vocale
+    function startRecognition() {
+        if (!('webkitSpeechRecognition' in window)) {
+            alert("Désolé, votre navigateur ne supporte pas la reconnaissance vocale.");
+            return;
+        }
+
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = "fr-FR"; // Définir la langue en français
+        recognition.interimResults = false; // Pas de résultats intermédiaires
+        recognition.maxAlternatives = 1; // Nombre maximum de mots alternatifs
+
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript.toLowerCase().trim();
+            console.log("Vous avez dit : " + transcript); // Affiche la transcription
+            
+            // Si le mot secret est détecté
+            if (transcript === secretWord) {
+                onSecretWordDetected();  // Ouvre le modal
+            } else {
+                alert("Ce n'est pas le bon mot ! Essayez encore.");
+            }
+        };
+
+        recognition.onerror = function(event) {
+            console.error("Erreur de reconnaissance vocale : ", event.error);
+        };
+
+        // Relancer la reconnaissance après chaque tentative
+        recognition.onend = function() {
+            recognition.start();
+        };
+
+        // Démarrer la reconnaissance vocale
+        recognition.start();
+    }
+
+    // Démarrer la reconnaissance vocale après le chargement de la page
+    window.onload = function() {
+        startRecognition();
+        hiddenVideo.play(); 
+        audio.play();
+    };
+
+</script>
+
+</body>
+</html>
